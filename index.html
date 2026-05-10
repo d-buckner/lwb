@@ -39,7 +39,18 @@
   <script>
     window.addEventListener("DOMContentLoaded", async () => {
       if ("serviceWorker" in navigator) {
-        await navigator.serviceWorker.register("./sw.js");
+        const reg = await navigator.serviceWorker.register("./sw.js");
+        if (reg.installing) {
+          // First install — wait for activation then reload so the SW
+          // is in control before Ruffle makes any network requests.
+          await new Promise(resolve => {
+            reg.installing.addEventListener("statechange", e => {
+              if (e.target.state === "activated") resolve();
+            });
+          });
+          location.reload();
+          return;
+        }
         await navigator.serviceWorker.ready;
       }
       const ruffle = window.RufflePlayer.newest();
