@@ -1,0 +1,1 @@
+bin0=pre,con,pro&bin1=dis,out,for&bin2=com,sub,mis&bin3=per,int,can&bin4=str,man,car&bin5=all,air,run&bin6=win,far,bar&bin7=day,way,say&bin8=spr,shr,scr
