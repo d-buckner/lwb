@@ -37,7 +37,11 @@
   </script>
   <script src="ruffle/ruffle.js"></script>
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("DOMContentLoaded", async () => {
+      if ("serviceWorker" in navigator) {
+        await navigator.serviceWorker.register("./sw.js");
+        await navigator.serviceWorker.ready;
+      }
       const ruffle = window.RufflePlayer.newest();
       const player = ruffle.createPlayer();
       document.body.appendChild(player);

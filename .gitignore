@@ -4,6 +4,7 @@
 # Allow only game files
 !.gitignore
 !index.html
+!sw.js
 !word_bubbles.swf
 !ruffle/
 !ruffle/**
